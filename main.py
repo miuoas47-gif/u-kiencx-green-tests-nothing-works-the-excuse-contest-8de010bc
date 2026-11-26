@@ -22,8 +22,9 @@ def build_line() -> str:
 def write_output(line: str) -> None:
     output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "output")
     os.makedirs(output_dir, exist_ok=True)
-    with open(os.path.join(output_dir, "output.txt"), "w", encoding="utf-8") as f:
-        f.write(line + "\n")
+    for name in ("output.txt", "entry.txt"):
+        with open(os.path.join(output_dir, name), "w", encoding="utf-8") as f:
+            f.write(line + "\n")
 
 
 def main() -> int:
